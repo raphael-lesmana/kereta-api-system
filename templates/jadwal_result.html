@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Jadwal
+{% endblock %}
+
+{% block main %}
+<h1>Jadwal Keberangkatan dari {{ stasiun_asal }} ke {{ stasiun_akhir }}</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Kode</th>
+            <th scope="col">Stasiun asal</th>
+            <th scope="col">Stasiun akhir</th>
+            <th scope="col">Waktu berangkat</th>
+            <th scope="col">Waktu tiba</th>
+        </tr>
+    </thead>
+</table>
+{% endblock %}
