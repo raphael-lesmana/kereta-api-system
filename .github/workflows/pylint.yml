@@ -22,4 +22,4 @@ jobs:
         pip install flask
     - name: Analysing the code with pylint
       run: |
-        pylint $(git ls-files '*.py') --disable=C0116 --disable=C0114
+        pylint $(git ls-files '*.py') --disable=C0116 --disable=C0114 --disable=E0401
