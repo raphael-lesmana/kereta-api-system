@@ -1,4 +1,5 @@
 import os
+import sys
 
 import mariadb
 
@@ -24,7 +25,12 @@ cur = conn.cursor()
 
 app = Flask(__name__)
 
-@app.route("/")
-def hello_world():
+app.config["TEMPLATES_AUTO_RELOAD"] = True
 
-    return "<p>Hello, World!</p>"
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+@app.route("/jadwal")
+def jadwal():
+    return 
