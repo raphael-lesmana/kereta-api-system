@@ -58,3 +58,27 @@ def jadwal():
         cur.execute("SELECT nama_stasiun FROM stasiun")
 
         return render_template("jadwal_form.html", stasiun_rs=list(cur))
+
+@app.route("/stasiun")
+def stasiun():
+    cur.execute("""SELECT nama_stasiun, count(kk.kode_keberangkatan) from stasiun s
+                    LEFT JOIN kode_keberangkatan kk
+                    ON kk.kode_stasiun_awal=s.kode_stasiun
+                    group by s.kode_stasiun;
+                """)
+                
+    return render_template("stasiun.html", stasiun_rs=list(cur))
+    
+@app.route("/masinis")
+def masinis():
+    cur.execute("""SELECT nama_stasiun, count(kk.kode_keberangkatan) from stasiun s
+                    LEFT JOIN kode_keberangkatan kk
+                    ON kk.kode_stasiun_awal=s.kode_stasiun
+                    group by s.kode_stasiun;
+                """)
+                
+    return render_template("stasiun.html", stasiun_rs=list(cur))
+
+@app.route("/tentang")
+def tentang():
+    return render_template("tentang.html")

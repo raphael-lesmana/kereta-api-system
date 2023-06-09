@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block style %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+<style>
+    .credit_text:hover {
+        animation: tada;
+        animation_duration: 2s;
+    }
+</style>
+{% endblock %}
+
+{% block title %}
+Tentang
+{% endblock %}
+
+{% block main %}
+<h1>Anggota Kelompok</h1>
+<ul>
+    <li class="animate__animated animate__backInLeft credit_text">Marbella (2540119223)</li> 
+    <li class="animate__animated animate__backInRight credit_text">Moethia Shakira (2501987091)</li>
+    <li class="animate__animated animate__backInLeft credit_text">Raphael Alexander Lesmana (2540128114)</li>
+    <li class="animate__animated animate__backInRight credit_text">Yennifer Wilanata (2540123725)</li>
+</ul>
+{% endblock %}
+

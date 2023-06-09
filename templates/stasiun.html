@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Stasiun
+{% endblock %}
+
+{% block main %}
+<h1>Stasiun yang Dilayani</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nama stasiun</th>
+            <th scope="col">Jumlah keberangkatan</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in stasiun_rs %}
+        <tr>
+            <td>{{ i[0]}}</td>
+            <td>{{ i[1]}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
