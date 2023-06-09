@@ -37,16 +37,16 @@ def jadwal():
         stasiun_asal = request.form.get("stasiun_asal")
         
         cur.execute("""SELECT kk.kode_keberangkatan, s1.nama_stasiun, 
-						s2.nama_stasiun, waktu_keberangkatan, waktu_tiba
-						FROM keberangkatan k
-						JOIN kode_keberangkatan kk
-						ON k.kode_keberangkatan=kk.kode_keberangkatan
-						JOIN stasiun s1
-						ON s1.kode_stasiun=kk.kode_stasiun_awal
-						JOIN stasiun s2
-						ON s2.kode_stasiun=kk.kode_stasiun_akhir
-						WHERE s1.nama_stasiun=?
-					""", (stasiun_asal,))
+                        s2.nama_stasiun, waktu_keberangkatan, waktu_tiba
+                        FROM keberangkatan k
+                        JOIN kode_keberangkatan kk
+                        ON k.kode_keberangkatan=kk.kode_keberangkatan
+                        JOIN stasiun s1
+                        ON s1.kode_stasiun=kk.kode_stasiun_awal
+                        JOIN stasiun s2
+                        ON s2.kode_stasiun=kk.kode_stasiun_akhir
+                        WHERE s1.nama_stasiun=?
+                    """, (stasiun_asal,))
         
         jadwal_rs = list(cur)
 
