@@ -35,11 +35,24 @@ def index():
 def jadwal():
     if request.method == "POST":
         stasiun_asal = request.form.get("stasiun_asal")
-        stasiun_akhir = request.form.get("stasiun_akhir")
+        
+        cur.execute("""SELECT kk.kode_keberangkatan, s1.nama_stasiun, 
+						s2.nama_stasiun, waktu_keberangkatan, waktu_tiba
+						FROM keberangkatan k
+						JOIN kode_keberangkatan kk
+						ON k.kode_keberangkatan=kk.kode_keberangkatan
+						JOIN stasiun s1
+						ON s1.kode_stasiun=kk.kode_stasiun_awal
+						JOIN stasiun s2
+						ON s2.kode_stasiun=kk.kode_stasiun_akhir
+						WHERE s1.nama_stasiun=?
+					""", (stasiun_asal,))
+        
+        jadwal_rs = list(cur)
 
         return render_template("jadwal_result.html", 
             stasiun_asal=stasiun_asal, 
-            stasiun_akhir=stasiun_akhir
+            jadwal_rs=jadwal_rs
         )
     else:
         cur.execute("SELECT nama_stasiun FROM stasiun")

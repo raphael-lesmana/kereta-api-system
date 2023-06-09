@@ -5,7 +5,7 @@ Jadwal
 {% endblock %}
 
 {% block main %}
-<h1>Jadwal Keberangkatan dari {{ stasiun_asal }} ke {{ stasiun_akhir }}</h1>
+<h1>Jadwal Keberangkatan dari Stasiun {{ stasiun_asal }}</h1>
 <table class="table">
     <thead>
         <tr>
@@ -16,5 +16,16 @@ Jadwal
             <th scope="col">Waktu tiba</th>
         </tr>
     </thead>
+    <tbody>
+        {% for i in jadwal_rs %}
+        <tr>
+            <td>{{ i[0]}}</td>
+            <td>{{ i[1]}}</td>
+            <td>{{ i[2]}}</td>
+            <td>{{ i[3]}}</td>
+            <td>{{ i[4]}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
 {% endblock %}

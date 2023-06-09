@@ -14,14 +14,6 @@ Jadwal
             {% endfor %}
         </select>
     </div>
-    <div class="mb-3">
-        <label for="stasiunAkhir">Stasiun akhir:</label>
-        <select class="form-select" name="stasiun_akhir" id="stasiunAkhir">
-            {% for (i,) in stasiun_rs %}
-            <option value="{{ i }}">{{ i }}</option>
-            {% endfor %}
-        </select>
-    </div>
     <button type="submit" class="btn btn-primary">Cari</button>
 </form>
 {% endblock %}
