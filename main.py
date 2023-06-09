@@ -35,8 +35,8 @@ def index():
 def jadwal():
     if request.method == "POST":
         stasiun_asal = request.form.get("stasiun_asal")
-        
-        cur.execute("""SELECT kk.kode_keberangkatan, s1.nama_stasiun, 
+
+        cur.execute("""SELECT kk.kode_keberangkatan, s1.nama_stasiun,
                         s2.nama_stasiun, waktu_keberangkatan, waktu_tiba
                         FROM keberangkatan k
                         JOIN kode_keberangkatan kk
@@ -47,17 +47,17 @@ def jadwal():
                         ON s2.kode_stasiun=kk.kode_stasiun_akhir
                         WHERE s1.nama_stasiun=?
                     """, (stasiun_asal,))
-        
+
         jadwal_rs = list(cur)
 
-        return render_template("jadwal_result.html", 
-            stasiun_asal=stasiun_asal, 
+        return render_template("jadwal_result.html",
+            stasiun_asal=stasiun_asal,
             jadwal_rs=jadwal_rs
         )
-    else:
-        cur.execute("SELECT nama_stasiun FROM stasiun")
 
-        return render_template("jadwal_form.html", stasiun_rs=list(cur))
+    cur.execute("SELECT nama_stasiun FROM stasiun")
+
+    return render_template("jadwal_form.html", stasiun_rs=list(cur))
 
 @app.route("/stasiun")
 def stasiun():
@@ -66,9 +66,9 @@ def stasiun():
                     ON kk.kode_stasiun_awal=s.kode_stasiun
                     group by s.kode_stasiun;
                 """)
-                
+
     return render_template("stasiun.html", stasiun_rs=list(cur))
-    
+
 @app.route("/masinis")
 def masinis():
     cur.execute("""SELECT nama_stasiun, count(kk.kode_keberangkatan) from stasiun s
@@ -76,7 +76,7 @@ def masinis():
                     ON kk.kode_stasiun_awal=s.kode_stasiun
                     group by s.kode_stasiun;
                 """)
-                
+
     return render_template("stasiun.html", stasiun_rs=list(cur))
 
 @app.route("/tentang")
