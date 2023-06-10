@@ -71,13 +71,9 @@ def stasiun():
 
 @app.route("/masinis")
 def masinis():
-    cur.execute("""SELECT nama_stasiun, count(kk.kode_keberangkatan) from stasiun s
-                    LEFT JOIN kode_keberangkatan kk
-                    ON kk.kode_stasiun_awal=s.kode_stasiun
-                    group by s.kode_stasiun;
-                """)
+    cur.execute("SELECT * FROM masinis")
 
-    return render_template("stasiun.html", stasiun_rs=list(cur))
+    return render_template("masinis.html", masinis_rs=list(cur))
 
 @app.route("/tentang")
 def tentang():

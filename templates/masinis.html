@@ -3,3 +3,28 @@
 {% block title %}
 Masinis
 {% endblock %}
+
+{% block main %}
+<h1>Jadwal Keberangkatan dari Stasiun {{ stasiun_asal }}</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Kode</th>
+            <th scope="col">Nama masinis</th>
+            <th scope="col">Tanggal lahir</th>
+            <th scope="col">Bekerja sejak</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in masinis_rs %}
+        <tr>
+            <td>{{ i[0]}}</td>
+            <td>{{ i[1]}}</td>
+            <td>{{ i[2]}}</td>
+            <td>{{ i[3]}}</td>
+            <td>{{ i[4]}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
