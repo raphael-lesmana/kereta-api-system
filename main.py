@@ -56,7 +56,7 @@ def jadwal():
             jadwal_rs=jadwal_rs
         )
 
-    cur.execute("""SELECT nama_stasiun 
+    cur.execute("""SELECT nama_stasiun
                     FROM stasiun
                     ORDER BY nama_stasiun ASC
                 """)
@@ -78,7 +78,7 @@ def masinis():
     cur.execute("SELECT * FROM masinis")
 
     return render_template("masinis.html", masinis_rs=list(cur))
-    
+
 @app.route("/kereta")
 def kereta():
     cur.execute("SELECT * FROM kereta")
