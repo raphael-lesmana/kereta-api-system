@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Masinis
+{% endblock %}
+
+{% block main %}
+<h1>Armada Kereta </h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Kode</th>
+            <th scope="col">Beroperasi sejak</th>
+            <th scope="col">Jumlah gerbong</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in kereta_rs %}
+        <tr>
+            <td>{{ i[0]}}</td>
+            <td>{{ i[1]}}</td>
+            <td>{{ i[2]}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

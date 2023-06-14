@@ -74,6 +74,12 @@ def masinis():
     cur.execute("SELECT * FROM masinis")
 
     return render_template("masinis.html", masinis_rs=list(cur))
+    
+@app.route("/kereta")
+def kereta():
+    cur.execute("SELECT * FROM kereta")
+
+    return render_template("kereta.html", kereta_rs=list(cur))
 
 @app.route("/tentang")
 def tentang():
