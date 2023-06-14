@@ -46,6 +46,7 @@ def jadwal():
                         JOIN stasiun s2
                         ON s2.kode_stasiun=kk.kode_stasiun_akhir
                         WHERE s1.nama_stasiun=?
+                        ORDER BY waktu_keberangkatan ASC
                     """, (stasiun_asal,))
 
         jadwal_rs = list(cur)
@@ -55,7 +56,10 @@ def jadwal():
             jadwal_rs=jadwal_rs
         )
 
-    cur.execute("SELECT nama_stasiun FROM stasiun")
+    cur.execute("""SELECT nama_stasiun 
+                    FROM stasiun
+                    ORDER BY nama_stasiun ASC
+                """)
 
     return render_template("jadwal_form.html", stasiun_rs=list(cur))
 
